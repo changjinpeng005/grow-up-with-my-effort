@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var num = 123;
+        console.log(typeof num);
+
+        var n1 = new Number(123);
+        console.log(n1);
+        console.log(typeof n1);
+        //基本类型number，string，Boolean
+    </script>
+</head>
+<body>
+
+</body>
+</html>
