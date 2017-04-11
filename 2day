@@ -1,0 +1,167 @@
+   <script>
+        //
+//        var o = {n:123};
+//        var o2 = o;
+//
+//        //对象中的属性是值类型
+//        var o3 = {
+//            n:[1,2,3],
+//            m:{n:123}
+//        };
+//        o3.n[1]
+        //逻辑中断
+//        function fn(num){
+//            //如果传入了num就打印num的值，如果没有传入，就打印没有参数
+//            if(num !== undefined){
+//                console.log(num);
+//            }else {
+//                console.log("没有参数");
+//            }
+////            if( num ){}
+//            //三元运算符
+//            //
+//            num = num || "没有参数";
+//            console.log(num);
+//            //真&& 。。。。
+//            // ||
+//            //如果第一个为真就返回一个表达式，如果为假则返回第二个表达式
+//            //&&
+//            //如果第一个为假就返回第一个表达式，如果为真则返回第二个表达式
+//
+//            //表达式1 && 表达式2 && 表达式1
+//            // 先验证是否满足表达式1如果满足就执行表达式2 的验证
+//            //验证如果失败则返回假
+//            //验证如果成功返回表达式1
+//        }
+//        fn(123);
+//        fn();
+
+    </script>
+    
+    
+       <script>
+        // delete 删除
+        //语法: boolean delete 数据;
+        //在当前作用域上删除数据
+
+        //用法：
+        //1 删除数组中的一个元素
+        //2 删除一个对象的属性或方法
+        //3 只能删除一个没有用var 声明 变量
+//        var arr = [1, 2, 3, 4];
+//        console.log(arr);
+//        console.log(arr.length);
+//        var isTrue = delete arr[ 3 ];
+//        console.log(arr);
+//        console.log(arr.length);
+        //删除对象的属性
+//        var o = {name:"jim"};
+//        var isTrue = delete o.name;
+
+        var n = 1;
+            m = 2;
+        var isTrue1 = delete n;
+        var isTrue2 = delete m;
+        console.log(isTrue1);  //false
+        console.log(isTrue2);   //true
+
+        console.log(n);          //1
+        console.log(m);         // is not undefined
+
+
+
+    </script>
+    
+    
+    
+    
+    
+        <script>
+//        //报错会结束代码的运行
+//        function fn(){
+//            try {
+//        console.log(num);
+//            }catch(e){
+//                console.log("num没有定义");
+//                console.log(e);
+//            }
+//
+//        console.log(123);
+//        }
+//        fn();
+//        fn();
+//
+//        // 有些时候代码的错误是需要处理的，但是又不清楚是否会在这里报错
+//        // try-catch 的语法
+//
+//        //语法：
+//        try {
+//            //可能出现的错误代码
+//        }catch(e){
+//            //如果出现错误才会执行
+//        }finally {   // 可选
+//            //无论是否出现异常，最后执行
+//        }
+//
+//        // 这里的错误有一个术语叫异常exception
+//        // try    试一下
+//        // catch  抓住 异常
+//
+//
+//
+//        //自己抛出异常
+//        // throw
+//        // 语法： throw 对象
+//        // 一般对象是 new Error("错误消息")；
+//
+//
+//
+//        function fnError() {
+//            //throw new Error("我是一个自定义错误");
+//            throw [1,2,3,4];
+//        }
+//        function func(){
+//            try{
+//            fnError();
+//            }catch(e){
+//                console.log(e);
+//            }
+//        }
+//        func();
+//
+//
+//
+//        //函数的创建
+//        //1 声明式函数
+//        func();
+//        function func(){
+//            console.log(123);
+//        }
+
+        //js执行 ：预解析 一句一句执行
+        //2 ， 函数的字面量（直接量，lambda 表达式）
+//        fn();
+//        var fn = function(){
+//
+//        };
+        // 此时函数作为表达式存在
+        //凡是将数据和运算符等联系起来有值的式子就是表达式
+        // 1, 1+2 , new Date(), function (){}
+
+
+        //3, new Function
+
+
+
+        //声明函数不允许出现在表达式中
+//        if(false){
+//            function f(){
+//                console.log(123);
+//            }
+//        }
+//        f();
+        func();
+        var f  = function func(){
+
+        };
+    </script>
