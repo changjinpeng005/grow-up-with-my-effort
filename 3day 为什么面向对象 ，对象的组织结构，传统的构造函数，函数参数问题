@@ -1,0 +1,202 @@
+    <script>
+//        // jq 创建一个 p标签
+//        $("<p>我是一个自然段</p>").append("body");
+//        //传统
+//        var p = document.createElement("p");
+//        var txt = document.createTextNode("...");
+//        p.appendChild(txt);
+//        document.body.appendChild(p);
+//        //面向过程是你每件事都亲力亲为
+//        ///面向对象是让你从一个执行者变成管理者，找到对象让他去做这件事 ，你就
+
+等消息
+//        // 面向对象是对面向过程的封装
+    </script>
+</head>
+<body>
+
+// 函数
+// 反复执行的代码块
+//这个函数每调用一次就返回页面中第一个div标签
+//改良以后，函数可以获得指定标签名的所有的元素
+//为了让函数更好用，修改一下函数名
+<script>
+    function tag(tag){
+        return doucument.getElementsByTagName(tag);
+
+
+    }
+    //公式 ：
+    // 指定ID的元素
+    function id(id){
+        return document.getElementById(id);
+    }
+
+</script>
+    <div>div</div>
+    <p>dfesfes</p>
+<a href="">2343</a>
+<a href="">2343</a>
+<a href="" id = "alink">2343</a>
+<a href="">2343</a>
+<a href="">2343</a>
+
+</body>
+<script>
+    onload = function(){
+        var divNode = tag('div');
+        var pNode = document.getElementsByTagName("p")[0];
+        divNode.style.border = '1px solid red';
+        pNode.style.border = '1px solid green';
+
+        var a  = id("alink");
+        a.style.border = "1px solid blue";
+    }
+</script>
+
+
+    <script>
+        var a = function(){
+            alert("123");
+        };
+    </script>
+    <script>
+        var a = 123;
+        //在js中重复的var 无效
+        alert( a );
+    </script>
+
+
+ <script>
+        var itcast = {
+            tag:function(tagName){
+                return document.getElementsByTagName(tagName);
+            },
+            ID:function(idName){
+                return document.getElementById(idName);
+            }
+        };
+    </script>
+</head>
+<body>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+</body>
+<script>
+    itcast.tag("body")[0].style.border = "1px solid red";
+</script>
+
+
+
+    <script>
+        var itcast = {
+            //获得元素的
+            getElem: {
+                tag:function(tag){
+
+                },
+                id:function(id){
+
+                }
+            },
+            css:{
+                addStyle:function(){
+
+                },
+                removeStyle: function(){
+
+                },
+                addClass:function(){},
+                removeClass:function(){},
+                toggleClass:function(){}
+
+            }
+
+
+        };
+    </script>
+
+
+
+
+    <script>
+        //写一个对象描述一个人
+        //要求有姓名，年龄，性别，sayhello
+
+        //什么是对象？键值对的集合{key:value}
+        //变量的写法
+//        var name = "jim";
+//        var age = 19;
+//        var sex = "男";
+//        //json的表示法，对象的直接量（字面量）
+//        var p = {
+//            'name': "jim",
+//            'age': 19,
+//            'sex': "男"
+//            'sayHello':function(){
+//                alert("你好");
+//            }
+//        };
+//        var p2 = p;
+//        console.log(p == p2);
+//        p.sayHello();
+//        p['sayHello']();
+        //使用json对象的方法有一个缺点
+        //无法复用
+        //描述一个商品Goods(name,price,image,count)
+        //十件商品
+
+        //Person 的例子应该使用构造函数来完成
+        var Person = function (){
+            //构造函数中不需要return
+            //对象添加成员使用this.成员名 = 值
+            this.name = "jim";
+            this.age = 19;
+            this.sex = "nan";
+            this.sayHello = function(){
+                alert("hello world");
+            };
+
+        };
+        var p = new Person();
+        p.sayHello();
+        var p1 = new Person();
+        var p2 = new Person();
+        var p3 = new Person();
+        console.log(p1 == p2);
+    </script>
+
+
+
+<script>
+        //三角形求面积
+        //底 di,高 gao
+//        mianji = di*gao/2;
+        //一个具体的：di = 10,gao = 20
+        var 面积 = 10*10/2;
+        function get面积(底,高){
+            return 底*高/2;
+        }
+        //在参数中写变量的好处是：1，相当于声明了变量。2，调用时又一次赋值
+        var 面积 = get面积(1,3);
+       alert(面积);
+
+
+
+        //写一个函数，打印一段文字
+        function msg(消息){  //形参，就是形式参数
+            alert(消息);
+        }
+        msg("今天天气不错，我心情很好"); //实参，实际的参数
+
+
+        //圆的面积
+        // r^2*pi
+    </script>
+
+
