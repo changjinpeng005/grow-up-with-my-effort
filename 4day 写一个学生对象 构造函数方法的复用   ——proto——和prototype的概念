@@ -1,0 +1,120 @@
+<script>
+        //写一个student，要求有姓名性别年龄和课程分数（语文，数学，英语）
+        //和说话的方法
+
+//        var Student = {
+//
+//
+//        };
+//        var Student = function(name,age,sex,math,chinese,english){
+//            this.name = name;
+//            this.age = age;
+//            this.sex = sex;
+//            this.math = math;
+//            this.chinese = chinese;
+//            this.english = english;
+//            this.sayHello = function(){
+//                alert(this.name);
+//            }
+//        };
+//        var stu1 = new Student("lisi",14,"nan",2,3,4);
+//        stu1.sayHello();
+
+
+
+        //改良版笨
+        var Student = function(name,scores){
+            this.name = name;
+            this.score = scores;
+            this.sayHello = function(){
+                alert("你好，我是"+this.name+"数学"+this.score.math);
+            }
+        };
+        var stu2 = new Student("张三",{
+            math:90,
+            english:50,
+            chinese:03
+        });
+        stu2.sayHello();
+
+
+    </script>
+    
+    
+    
+    <script>
+        function Fn(name){
+          Fn.prototype.name = name;
+            Fn.prototype.sayHello = function(){
+                console.log("hhhhh");
+            };
+        }
+        var o1 = new Fn("fe");
+        var o2 = new Fn("3efee");
+        //假定所有的成员都占四个字节
+        //创建一个对象  8个字节
+        // 10           80
+        //方法是共享了
+        // 10            44
+        //重要的结论
+        //在函数里面有个一个属性prototype
+        // 由该函数创建的对象 会默认的连接到该属性上
+        function Fn(){
+
+        }
+        Fn.prototype.num = 123;
+        var f = new Fn();
+        f.num = 1;
+
+
+        alert(f.num);
+        //在访问对象的某一个属性（包括方法）的时候，首先会在当前对象中查找有没有该属性
+        //如果当前对象没有，就会在构造方法的定义规则中查找（当前对象）
+        //如果没有，就会到与对象联系起来的构造函数的prototype属性中找
+
+
+        function Fn1(name){
+            this.name = name;
+            this.sayHello = function(){
+                console.log("123");
+            };
+        }
+        var p1 = new Fn1("fe");
+        var p2 = new Fn1("fefse");
+
+
+        function Fn2(name){
+            this.name = name;
+        }
+        Fn2.prototype.sayHello = function(){
+            console.log("fffff");
+        };
+        var pp1 = new Fn2("fef");
+        var pp2 = new Fn2("fefefe");
+        console.log(pp1.sayHello() === pp2.sayHello());
+
+    </script>
+    
+    
+    
+    <script>
+        //对象中有一个属性叫——proto——
+        //通过调试可以发现对象的——proto——与创建他的构造函数prototype 是一个东西
+        function F(){}
+        var o  =new F();
+        console.log(o.__proto__ === F.prototype);
+        //__proto__ 是非标准属性
+
+        //原型
+
+//        F.prototype            原型属性
+//        o.__proto__            原型对象
+        // F.prototype  是构造函数F 的原型属性
+        // F.prototype  是对象o 的原型对象
+        // 在访问一个对象的属性的时候，首先在当前对象中找，如果没有在其原型对象中找
+        var fn1 = function(){};
+        var fn2 = function(){};
+         var fn1 = new fn1();
+        //fn1.prototype 是f1的原型对象
+
+    </script>
