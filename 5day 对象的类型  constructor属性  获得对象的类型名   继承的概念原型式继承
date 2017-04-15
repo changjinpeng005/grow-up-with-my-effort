@@ -1,0 +1,242 @@
+<script>
+        // 在js中类型是很弱的一个概念
+         var n = 123;
+        n = "a";
+        n = {};
+        //在js中数据是有类型的，但是变量是没有类型约束
+        //对象的类型是什么
+        //typeof 操作对象统一返回的是object
+
+        console.log(typeof []);
+        console.log(typeof {});
+        console.log(typeof 123);
+        console.log(typeof "");
+        console.log(typeof true);
+        console.log(typeof new Date() );
+        console.log(typeof /123/); //正则表达式
+        console.log(typeof function(){}); //返回function
+
+
+        //需要明确对象的类型以便做复杂的处理
+        //$(???)
+        //string    ->选择器，HTML
+        //function    ->onload
+        // DOM对象    ->jq对象
+
+
+        //
+        function Person(){
+
+        }
+        var p = new Person();  //常常描述为Person对象
+
+        //创建什么对象的时候，其实我们描述的是构造方法的名字
+        //构造函数的名字就死对象的类型的名字
+    </script>
+    
+        <script>
+        //每一个对象都可以访问到一个属性
+        //其中有一个是constructor（构造器）
+        //每一个对象的constructor属性描述的是其构造函数
+
+
+        function Fn(){
+
+        }
+        var o = new Fn();
+        console.log(o.constructor === Fn);
+
+        //每一个对象都链接到其原型对象上
+        //对象的constructor 属性时期原型对象提供的
+
+        var obj = {};
+        console.log(obj.constructor);
+
+
+        //每一个对象都有原型对象
+
+
+        //如何获得对象的类型????
+
+    </script>
+    
+        <script>
+        var Person = function(){};
+        function Person(){}
+        var p = new Person();
+
+        //1.获得对象的构造函数
+        var ctr = p.constructor;
+        //2.将函数装换为字符串
+        var s = "" + ctr;
+        //3.将function与（之间的字符串截取出来
+      //  alert(s);
+        //3.1传统的字符串处理函数
+//        var start = s.replace("function", "|").indexof("|");
+//        if(start != -1){
+//            var end = s.replace("function","|").indexOf("(");
+//            if(end != -1){
+//                var name = s.replace("function","|").slice(start,end);
+//                alert("|"+name+"|");
+//            }
+//        }
+        //找start和end
+        //if(start != -1&&end!=-1)....
+        // string<string> = <string>.replace(<string>,<string>);
+        //number = <string>.indexOf(<string>);
+        //string   <string>.slice(startIndex,endIndex)
+
+        // 简化1，将重复的字符串处理合并，利用给一个变量来描述
+//        s = s.replace("function","|");  //  "|" 名字(){}
+////      简化2，if嵌套if代码很复杂
+//        var start = s.indexof("|");
+//        if(start != -1){
+//            var end = s.indexOf("(");
+//            if(end != -1){
+//                var name = s.slice(start,end);
+//                alert("|"+name+"|");
+//            }
+//        }
+
+        //获得开始的索引，获得结束的索引，如果索引符合要求，就获得字符串
+//        s = s.replace("function","|");
+//        var start = s.indexof("|");
+//        var end = s.indexOf("(");
+//
+//        if(start != -1 && end != -1){
+//                var name = s.slice(start=2,end);
+//                alert("|"+name+"|");
+//
+//        }
+
+
+
+        //3.2利用正则表达式
+        //"function Person(){}"
+        /*
+        var r  = /function (.+?)\(/;
+        var name = r.exec(s)[1];
+        alert("|"+name+"|");
+        */
+
+
+        //3.3 函数有一个属性，叫name 该属性表示函数的名字
+        alert(ctr.name);
+
+    </script>
+    
+      <script>
+        //写一个函数，获得函数名
+        function getFnName(fn){
+            // 验证传入的一定是函数
+            if(typeof fn !== "function") return;
+            //保证是函数
+//            if(fn.name){
+//                return fn.name;
+//            }else{
+//                return /function (.+)\(/.exec(fn + "")[1];
+//            }
+            //三木运算符
+//            return fn.name ? fn.name :  /function (.+)\(/.exec(fn + "")[1];
+            //逻辑中断
+            // ||
+            // &&
+            return fn.name || /function (.+)\(/.exec(fn + "")[1];
+        }
+        function PersonCheng(){}
+        var o = new PersonCheng();
+        var name = getFnName(o.constructor);
+        alert(name);
+    </script>
+    
+     <script>
+        //面向对象的特征就是封装性，继承性，多态性
+        //封装性：将复杂的包裹起来，隐藏起来，让简单的东西预留在外面
+        //继承性：拿来主义，自己没有把别人的拿过来，让其成为自己的
+
+        //在js 中有两种继承模型
+        //1，原型继承
+        //2.组合继承
+
+        //1,原型继承
+        //如果需要让一个对象有某一个行为（属性，方法），那么可以考虑将这个行为
+        //  加到原型对象中，那么这个对象就是继承自原型对象，获得该方法
+
+        //2，组合继承
+        //组合式继承就是将其他的对象中的成员加到自己的身上
+        var o1 = {name:"jim",age:19,sex:"mam"};
+        var o2 = {score:{
+            math:100,
+            chinese:120,
+            engligh:03
+        }};
+        //让o2继承自o1
+        //将o1的成员加到o2上
+//        for(var k in o1){
+//            o2[k] = o1[k];
+//        }
+        //由于for in 循环中的对象可以随意的替代，因此o2可以继承自任意的对象
+        //因此，这个继承方法称为组合式继承
+
+        //这里希望o2可以继承自任意的对象，所以为了简化继承的代码
+        //给o2提供一个方法，叫extend
+        o2.extend = function(obj){
+            for(var k in obj){
+                this[k] = obj[k];
+            }
+        }
+        o2.extend(o1);  //继承
+        o2.extend({
+            id:function(id){
+
+            },
+            tag:function(tag){
+
+            },
+            showErr:function(msg){
+                throw new Error(msg);
+            }
+        });
+    </script>
+    
+        <script>
+        //什么是原型式继承
+        //对象继承自其原型对象
+        //所谓的原型式继承就是在对象的原型对象中加东西即可
+        // 如何使用原型对象
+        //1， 利用对象的动态特性添加成员
+//        var o = {};
+//        o.name = "jim";
+//
+//        var Person = function(){};
+//        Person.prototype.sayHello = function(){
+//            alert("jejjeje");
+//        };
+        //此时原型对象是对象，可以利用动态特性随时添加成员
+        //添加的成员都会被构造函数创建的对象所继承
+
+        //2， 利用覆盖原型对象
+        var Person = function(){};
+        Person.prototype.sayHello = function(){
+            alert("jejjeje");
+        };
+        Person.prototype.sayGoodbye = function(){};
+        Person.prototype.sayLove = function(){};
+        //...
+
+        //如果需要添加的内容非常多
+        Person.prototype = {
+            sayHello:function(){},
+            sayGoodbye:function(){},
+            sayLove:function(){}
+
+        };
+        //这里由Person创建出来的对象是什么类型？
+
+        //3，  利用组合式继承添加原型成员
+    </script>
+    
+    
+    
+    
+    
