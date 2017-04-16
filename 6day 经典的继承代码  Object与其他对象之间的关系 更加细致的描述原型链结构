@@ -1,0 +1,112 @@
+<script>
+        //在实际开发中，如果希望获得一个继承自 对象O 的对象
+        //可以使用Object.create 方法
+        //ES5提供的方法
+
+     // 新对象  Object.create(作为原型对象的对象 )
+        var o1 = { name: "jim" };
+       // var o2 = Object.create( o1 );   //类型无关
+
+
+        //明确函数调用语法
+        //功能是什么？
+
+        //他会创建一个新对象，让他继承自参数对象
+        //创建新对象就有构造函数
+        //继承对象就有原型对象
+//
+//        function create( obj ){
+//            function F(){}
+//            //要有继承
+//            F.prototype = obj;
+//            return new F();
+//
+//
+//        }
+//        var o3 = create( o1 );
+
+
+        //在实际开发中，如果是为了兼容所有的浏览器，有两种方法
+        //1, 在原生对象中提供方法
+        if(!Object.create()){
+            Object.create = function(obj){
+                function F(){}
+                //要有继承
+                F.prototype = obj;
+                return new F();
+            }
+        }
+        var o4 = Object.create(o1);
+        var _ = 0;
+        //2， 统一用新的方法
+        var create = function(obj){
+            if(Object.create){
+                return Object.create(obj);
+            }else{
+                function F(){}
+                F.prototype = obj;
+                return new F();
+            }
+
+        }
+        var o5 = create (obj);
+        //无论浏览器是否支持该方法，都应该使用自己定义的方法来完成，但是
+        //在方法内部，判断浏览器是否具有该功能，如果有该功能
+        //则使用浏览器提供的功能
+        //如果浏览器不支持该功能，则自己实现
+    </script>
+
+
+<script>
+        var o = new Object();
+        // toString
+        //constructor
+        //。。。
+
+        //对象是有原型对象的
+        function Fn(){}
+        var o = new Fn();
+
+        //原型对象也有圆形对像，对象的原型对象一直往上找，会找到一个NULL
+        //在这个过程中，有一个Object 类型的，有很多方法的对象
+        //他就是Object.prototype
+
+
+        //要求 看到一个对象就知道他的原型链是什么样子的
+
+        var arr = [];
+        arr -> Array.prototype -> Object.prototype -> null
+
+        var o = new Object();
+        o -> Object.prototype ->null
+
+
+
+    </script>
+
+<script>
+        //一个基本类型，在内存中的逻辑结构
+        var num = 123;
+        //在内存中有一个区域存储着数字123，这个内存标记为num
+        //
+        //如果内存中存储一个字符串 “abc”
+
+        //值类型存储数值本身
+        var str = "abc";
+
+        //Boolean
+        var isTrue = true;
+
+        //例如引用类型
+        var o = {num:123};
+        //引用类型存储的是数据的引用
+        //引用类型的数据有两个存储区域，一个存储数据本身，一个变量存储引用
+
+
+        //数组
+        var arr = [1,2,3,4,{num:123}];
+        //数组是引用类型
+
+    </script>
+
+
